@@ -5,11 +5,11 @@ require '../functions.php';
 if (isset($_POST['add'])) {
   if (add($_POST) > 0) {
     echo "<script>
-            alert('data berhasil diaddkan');
+            alert('data berhasil ditambahkan');
             document.location.href = 'team.php';
          </script>";
   } else {
-    echo "data gagal diaddkan!";
+    echo "data gagal ditambahkan!";
   }
 }
 
@@ -22,11 +22,11 @@ if (isset($_POST['add'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>add Data Team</title>
+  <title>Tambah Data Team</title>
 </head>
 
 <body>
-  <h3>Form add Data Tim</h3>
+  <h3>Form Tambah Data Tim</h3>
 
   <form action="" method="post">
     <ul>

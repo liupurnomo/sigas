@@ -52,3 +52,73 @@ function add($data)
 
   mysqli_affected_rows($conn);
 }
+
+
+function tambah($data)
+{
+  $conn = koneksi();
+
+  $nama = htmlspecialchars($data['nama']);
+  $nik = htmlspecialchars($data['nik']);
+  $email = htmlspecialchars($data['email']);
+  $phone = htmlspecialchars($data['phone']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  $query = "INSERT INTO
+              karyawan
+            VALUES
+            (null, '$nama', '$nik', '$email', '$phone', '$gambar');
+          ";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+function hapus($id)
+{
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM karyawan WHERE id = $id") or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+function ubah($data)
+{
+  $conn = koneksi();
+
+  $id = $data['id'];
+  $nama = htmlspecialchars($data['nama']);
+  $nik = htmlspecialchars($data['nik']);
+  $email = htmlspecialchars($data['email']);
+  $phone = htmlspecialchars($data['phone']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  $query = "UPDATE karyawan SET
+              nama = '$nama',
+              nik = '$nik',
+              email = '$email',
+              phone = '$phone',
+              gambar = '$gambar'
+            WHERE id = $id";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+
+function cari($keyword)
+{
+  $conn = koneksi();
+
+  $query = "SELECT * FROM karyawan
+              WHERE 
+            nama LIKE '%$keyword%' OR
+            nik LIKE '%$keyword%'
+          ";
+
+  $result = mysqli_query($conn, $query);
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;
+}
