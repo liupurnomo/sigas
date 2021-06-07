@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+  <h2><a href="http://localhost/project/sigas/admin/karyawan/index.php">Karyawan </a> </h2>
 </body>
 
 </html>
